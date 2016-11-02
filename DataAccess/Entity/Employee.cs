@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccess.Entity
 {
@@ -20,6 +21,5 @@ namespace DataAccess.Entity
         public string Password { get; set; }
         public string Email { get; set; }
         public bool AdminRole { get; set; }
-
     }
 }

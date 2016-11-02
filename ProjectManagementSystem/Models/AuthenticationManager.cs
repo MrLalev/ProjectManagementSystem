@@ -41,6 +41,5 @@ namespace ProjectManagementSystem.Models
         {
             HttpContext.Current.Session["LoggedEmployee"] = null;
         }
-       }
     }
 }
