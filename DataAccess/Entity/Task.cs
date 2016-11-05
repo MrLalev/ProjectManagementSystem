@@ -16,7 +16,7 @@ namespace DataAccess.Entity
         public double LogWork { get; set; }
         public string Status { get; set; }
         public int PercentageDone { get; set; }
-        public int CreatorId { get; set; }
+        public Employee CreatorId { get; set; }
 
     }
 }

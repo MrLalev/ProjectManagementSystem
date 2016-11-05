@@ -112,13 +112,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611021931585_InitialCreate.cs" />
-    <Compile Include="Migrations\201611021931585_InitialCreate.Designer.cs">
-      <DependentUpon>201611021931585_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611022108091_EditEntities.cs" />
-    <Compile Include="Migrations\201611022108091_EditEntities.Designer.cs">
-      <DependentUpon>201611022108091_EditEntities.cs</DependentUpon>
+    <Compile Include="Migrations\201611051224071_SetDB.cs" />
+    <Compile Include="Migrations\201611051224071_SetDB.Designer.cs">
+      <DependentUpon>201611051224071_SetDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuthenticationManager.cs" />
@@ -146,11 +142,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611021931585_InitialCreate.resx">
-      <DependentUpon>201611021931585_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611022108091_EditEntities.resx">
-      <DependentUpon>201611022108091_EditEntities.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611051224071_SetDB.resx">
+      <DependentUpon>201611051224071_SetDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

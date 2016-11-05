@@ -3,7 +3,7 @@ namespace ProjectManagementSystem.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class SetDB : DbMigration
     {
         public override void Up()
         {
@@ -96,9 +96,11 @@ namespace ProjectManagementSystem.Migrations
                         LogWork = c.Double(nullable: false),
                         Status = c.String(),
                         PercentageDone = c.Int(nullable: false),
-                        CreatorId = c.Int(nullable: false),
+                        CreatorId_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Employees", t => t.CreatorId_Id)
+                .Index(t => t.CreatorId_Id);
             
             CreateTable(
                 "dbo.Teams",
@@ -114,6 +116,8 @@ namespace ProjectManagementSystem.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.Tasks", "CreatorId_Id", "dbo.Employees");
+            DropIndex("dbo.Tasks", new[] { "CreatorId_Id" });
             DropTable("dbo.Teams");
             DropTable("dbo.Tasks");
             DropTable("dbo.Projects");

@@ -14,5 +14,6 @@ namespace DataAccess.Entity
         public DateTime EndDate { get; set; }
         public int TeamId { get; set; }
         public bool Finished { get; set; }
+
     }
 }

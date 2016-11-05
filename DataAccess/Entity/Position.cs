@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DataAccess.Entity
 {
     public class Position:BaseId
-    {
+    { 
         public string Name { get; set; }
         public decimal Salary { get; set; }
     }

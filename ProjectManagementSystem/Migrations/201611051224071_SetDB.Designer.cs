@@ -7,13 +7,13 @@ namespace ProjectManagementSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class EditEntities : IMigrationMetadata
+    public sealed partial class SetDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(EditEntities));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SetDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611022108091_EditEntities"; }
+            get { return "201611051224071_SetDB"; }
         }
         
         string IMigrationMetadata.Source
