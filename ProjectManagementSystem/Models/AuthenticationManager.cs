@@ -20,7 +20,7 @@ namespace ProjectManagementSystem.Models
                     HttpContext.Current.Session["LoggedEmployee"] = new Authorise();
                 }
 
-                authorise = (Authorise)HttpContext.Current.Session["LoggedUser"];
+                authorise = (Authorise)HttpContext.Current.Session["LoggedEmployee"];
                 return authorise.LoggedEmployee;
             }
         }

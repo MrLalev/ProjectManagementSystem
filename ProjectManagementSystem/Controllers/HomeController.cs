@@ -12,8 +12,6 @@ using System.Web.Mvc;
 
 namespace ProjectManagementSystem.Controllers
 {
-    public class HomeController : Controller
-    {
         public class HomeController : Controller
         {
             public ActionResult Index()
@@ -172,5 +170,4 @@ namespace ProjectManagementSystem.Controllers
                 return RedirectToAction("Details", "Home");
             }
         }
-	}
 }
