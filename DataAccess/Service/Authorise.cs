@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess.Entity;
+using DataAccess.Repository;
 
 namespace DataAccess.Service
 {
@@ -13,11 +14,11 @@ namespace DataAccess.Service
 
         public void Authenticate(string email, string password)
         {
-            //EmployeeRepo employeeRepo = new EmployeeRepo();
+             EmployeeRepo employeeRepo = new EmployeeRepo();
 
-            //List<Employee> employees = employeeRepo.GetAll(p => p.Email == email && p.Password == password).ToList();
+             List<Employee> employees = employeeRepo.GetAll(p => p.Email == email && p.Password == password).ToList();
 
-            //LoggedEmployee = employees.Count > 0 ? employees[0] : null;
+             LoggedEmployee = employees.Count > 0 ? employees[0] : null;
 
         }
     }
