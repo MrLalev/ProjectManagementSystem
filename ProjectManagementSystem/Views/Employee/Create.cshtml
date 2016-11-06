@@ -4,6 +4,19 @@
     ViewBag.Title = "Create";
 }
 
+<link rel="stylesheet" type="text/css" href="~/Content/jquery.datetimepicker.css" />
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/jquery.datetimepicker.full.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#DateOfBirth').datetimepicker(
+            {
+                timepicker: false,
+                format: 'd.m.Y'
+            });
+    });
+</script>
+
 <h2>Create</h2>
 
 @using (Html.BeginForm()) 
@@ -18,72 +31,72 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName)
-                @Html.ValidationMessageFor(model => model.FirstName)
+                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" } )
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.SecondName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.SecondName)
-                @Html.ValidationMessageFor(model => model.SecondName)
+                @Html.TextBoxFor(model => model.SecondName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SecondName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName)
-                @Html.ValidationMessageFor(model => model.LastName)
+                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Password)
-                @Html.ValidationMessageFor(model => model.Password)
+                @Html.TextBoxFor(model => model.Password, new { type = "password", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.RePassword, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RePassword)
-                @Html.ValidationMessageFor(model => model.RePassword)
+                @Html.TextBoxFor(model => model.RePassword, new { type = "password", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RePassword, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Email)
-                @Html.ValidationMessageFor(model => model.Email)
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Adress, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Adress)
-                @Html.ValidationMessageFor(model => model.Adress)
+                @Html.TextBoxFor(model => model.Adress,new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Adress, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Phone, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Phone)
-                @Html.ValidationMessageFor(model => model.Phone)
+                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.DateOfBirth, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DateOfBirth)
-                @Html.ValidationMessageFor(model => model.DateOfBirth)
+                <input type="text" class="form-control" value="" id="DateOfBirth" name="DateOfBirth" />
+                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -91,7 +104,7 @@
             @Html.LabelFor(model => model.PositionId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.PositionId, Model.ListPositions, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PositionId)
+                @Html.ValidationMessageFor(model => model.PositionId, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -99,7 +112,7 @@
             @Html.LabelFor(model => model.TeamId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.TeamId, Model.ListTeams, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.TeamId)
+                @Html.ValidationMessageFor(model => model.TeamId, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -107,15 +120,15 @@
             @Html.LabelFor(model => model.ManagerId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.ManagerId, Model.ListManagers, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ManagerId)
+                @Html.ValidationMessageFor(model => model.ManagerId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.AdminRole, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AdminRole)
-                @Html.ValidationMessageFor(model => model.AdminRole)
+                @Html.EditorFor(model => model.AdminRole, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AdminRole, "", new { @class = "text-danger" })
             </div>
         </div>
 

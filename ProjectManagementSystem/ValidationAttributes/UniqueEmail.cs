@@ -41,9 +41,12 @@ namespace ProjectManagementSystem.ValidationAttributes
             {
                 foreach (var item in Employees)
                 {
-                    if (item.Email == value.ToString())
+                    if (value != null)
                     {
-                        return new ValidationResult("This E-mail already exists!");
+                        if (item.Email == value.ToString())
+                        {
+                            return new ValidationResult("This E-mail already exists!");
+                        }
                     }
                 }
             }
