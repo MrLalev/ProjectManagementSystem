@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+
 
 namespace ProjectManagementSystem.ViewModels.EmployeeVM
 {
@@ -53,5 +55,9 @@ namespace ProjectManagementSystem.ViewModels.EmployeeVM
 
         [Display(Name = "Admin:")]
         public bool AdminRole { get; set; }
+
+        public List<SelectListItem> ListManagers { get; set; }
+        public List<SelectListItem> ListTeams { get; set; }
+        public List<SelectListItem> ListPositions { get; set; }
     }
 }

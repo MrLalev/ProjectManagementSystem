@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Service
 {
-    class DepartmentService : BaseService<Department>
+    public class DepartmentService : BaseService<Department>
     {
         public override BaseRepo<Department> SetRepo()
         {

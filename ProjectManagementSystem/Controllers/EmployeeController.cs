@@ -1,5 +1,6 @@
 ﻿using DataAccess.Entity;
 using DataAccess.Service;
+using ProjectManagementSystem.Models;
 using ProjectManagementSystem.ViewModels.EmployeeVM;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,61 @@ namespace ProjectManagementSystem.Controllers
 {
     public class EmployeeController : BaseController<Employee, ListEmployeeVM, EditEmployeeVM, DetailsEmployeeVM, EmployeeFilterVM>
     {
+        public override void FillList(EditEmployeeVM model)
+        {
+            EmployeeService EmployeeService = new EmployeeService();
+            List<Employee> managers = EmployeeService.GetAll().ToList();
+
+            model.ListManagers = new List<SelectListItem>();
+            model.ListManagers.Add(new SelectListItem(){Text = "", Value = null});
+            foreach (var item in managers)
+            {
+                if (item.Id != AuthenticationManager.LoggedEmployee.Id)
+                {
+                    model.ListManagers.Add(new SelectListItem()
+                    {
+                        Text = item.FirstName + " " + item.LastName,
+                        Value = item.Id.ToString()
+                    });
+                }
+
+            }
+
+            model.ListManagers[0].Selected = true;
+
+            TeamService TeamService = new TeamService();
+            List<Team> teams = TeamService.GetAll().ToList();
+
+            model.ListTeams = new List<SelectListItem>();
+            foreach (var item in teams)
+            {
+                model.ListTeams.Add(new SelectListItem()
+                {
+                    Text = item.Name,
+                    Value = item.Id.ToString()
+                });
+
+            }
+
+            model.ListTeams[0].Selected = true;
+
+            PositionService PositionService = new PositionService();
+            List<Position> positions = PositionService.GetAll().ToList();
+
+            model.ListPositions = new List<SelectListItem>();
+            foreach (var item in positions)
+            {
+                model.ListPositions.Add(new SelectListItem()
+                {
+                    Text = item.Name,
+                    Value = item.Id.ToString()
+                });
+
+            }
+
+            model.ListPositions[0].Selected = true;
+        }
+
         public override void ExtraDelete(Employee employee)
         {
             TaskService TaskService = new TaskService();

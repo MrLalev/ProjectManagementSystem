@@ -115,8 +115,15 @@
     <Compile Include="AppDbContext.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PositionController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\Project_ReportController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Filters\AuthenticationFilterAttribute.cs" />
     <Compile Include="Filters\FilterByAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -134,6 +141,14 @@
     <Compile Include="ViewModels\BaseFilter.cs" />
     <Compile Include="ViewModels\BaseVMId.cs" />
     <Compile Include="ViewModels\BaseVMList.cs" />
+    <Compile Include="ViewModels\CommentVM\CommentFilterVM.cs" />
+    <Compile Include="ViewModels\CommentVM\DetailsCommentVM.cs" />
+    <Compile Include="ViewModels\CommentVM\EditCommentVM.cs" />
+    <Compile Include="ViewModels\CommentVM\ListCommentVM.cs" />
+    <Compile Include="ViewModels\DepartmentVM\DepartmentFilterVM.cs" />
+    <Compile Include="ViewModels\DepartmentVM\DetailsDepartmentVM.cs" />
+    <Compile Include="ViewModels\DepartmentVM\EditDepartmentVM.cs" />
+    <Compile Include="ViewModels\DepartmentVM\ListDepartmentVM.cs" />
     <Compile Include="ViewModels\EmployeeVM\DetailsEmployeeVM.cs" />
     <Compile Include="ViewModels\EmployeeVM\EditEmployeeVM.cs" />
     <Compile Include="ViewModels\EmployeeVM\EmployeeFilterVM.cs" />
@@ -141,6 +156,26 @@
     <Compile Include="ViewModels\FilterVM.cs" />
     <Compile Include="ViewModels\HomeVM\LogInVM.cs" />
     <Compile Include="ViewModels\PagerVM.cs" />
+    <Compile Include="ViewModels\PositionVM\DetailsPositionVM.cs" />
+    <Compile Include="ViewModels\PositionVM\EditPositionVM.cs" />
+    <Compile Include="ViewModels\PositionVM\ListPositionVM.cs" />
+    <Compile Include="ViewModels\PositionVM\PositionFilterVM.cs" />
+    <Compile Include="ViewModels\ProjectVM\DetailsProjectVM.cs" />
+    <Compile Include="ViewModels\ProjectVM\EditProjectVM.cs" />
+    <Compile Include="ViewModels\ProjectVM\ListProjectVM.cs" />
+    <Compile Include="ViewModels\ProjectVM\ProjectFilterVM.cs" />
+    <Compile Include="ViewModels\Project_ReportVM\DetailsProject_ReportVM.cs" />
+    <Compile Include="ViewModels\Project_ReportVM\EditProject_ReportVM.cs" />
+    <Compile Include="ViewModels\Project_ReportVM\ListProject_ReportVM.cs" />
+    <Compile Include="ViewModels\Project_ReportVM\Project_ReportFilterVM.cs" />
+    <Compile Include="ViewModels\TaskVM\DetailsTaskVM.cs" />
+    <Compile Include="ViewModels\TaskVM\EditTaskVM.cs" />
+    <Compile Include="ViewModels\TaskVM\ListTaskVM.cs" />
+    <Compile Include="ViewModels\TaskVM\TaskFilterVM.cs" />
+    <Compile Include="ViewModels\TeamVM\DetailsTeamVM.cs" />
+    <Compile Include="ViewModels\TeamVM\EditTeamVM.cs" />
+    <Compile Include="ViewModels\TeamVM\ListTeamVM.cs" />
+    <Compile Include="ViewModels\TeamVM\TeamFilterVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -159,7 +194,14 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Comment\" />
+    <Folder Include="Views\Department\" />
     <Folder Include="Views\Employee\" />
+    <Folder Include="Views\Position\" />
+    <Folder Include="Views\Project\" />
+    <Folder Include="Views\Project_Report\" />
+    <Folder Include="Views\Task\" />
+    <Folder Include="Views\Team\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611051224071_SetDB.resx">
