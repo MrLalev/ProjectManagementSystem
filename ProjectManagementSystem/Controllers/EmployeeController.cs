@@ -18,7 +18,6 @@ namespace ProjectManagementSystem.Controllers
             List<Employee> managers = EmployeeService.GetAll().ToList();
 
             model.ListManagers = new List<SelectListItem>();
-            model.ListManagers.Add(new SelectListItem(){Text = "", Value = null});
             foreach (var item in managers)
             {
                 if (item.Id != AuthenticationManager.LoggedEmployee.Id)
@@ -32,7 +31,10 @@ namespace ProjectManagementSystem.Controllers
 
             }
 
-            model.ListManagers[0].Selected = true;
+            if (model.ListManagers.Count() > 0)
+            {
+                model.ListManagers[0].Selected = true;
+            }
 
             TeamService TeamService = new TeamService();
             List<Team> teams = TeamService.GetAll().ToList();
@@ -48,7 +50,10 @@ namespace ProjectManagementSystem.Controllers
 
             }
 
-            model.ListTeams[0].Selected = true;
+            if (model.ListTeams.Count() > 0)
+            {
+                model.ListTeams[0].Selected = true;
+            }
 
             PositionService PositionService = new PositionService();
             List<Position> positions = PositionService.GetAll().ToList();
@@ -64,7 +69,11 @@ namespace ProjectManagementSystem.Controllers
 
             }
 
-            model.ListPositions[0].Selected = true;
+            if (model.ListPositions.Count() > 0)
+            {
+                model.ListPositions[0].Selected = true;
+            }
+
         }
 
         public override void ExtraDelete(Employee employee)

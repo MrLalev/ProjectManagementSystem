@@ -126,12 +126,14 @@
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Filters\AuthenticationFilterAttribute.cs" />
     <Compile Include="Filters\FilterByAttribute.cs" />
+    <Compile Include="Filters\FilterDropDownAttribute.cs" />
+    <Compile Include="Filters\LogedFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611051224071_SetDB.cs" />
-    <Compile Include="Migrations\201611051224071_SetDB.Designer.cs">
-      <DependentUpon>201611051224071_SetDB.cs</DependentUpon>
+    <Compile Include="Migrations\201611061537116_SetDB.cs" />
+    <Compile Include="Migrations\201611061537116_SetDB.Designer.cs">
+      <DependentUpon>201611061537116_SetDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuthenticationManager.cs" />
@@ -184,6 +186,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\LogIn.cshtml" />
+    <Content Include="Views\Employee\Details.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\Delete.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -196,7 +203,6 @@
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Comment\" />
     <Folder Include="Views\Department\" />
-    <Folder Include="Views\Employee\" />
     <Folder Include="Views\Position\" />
     <Folder Include="Views\Project\" />
     <Folder Include="Views\Project_Report\" />
@@ -204,15 +210,15 @@
     <Folder Include="Views\Team\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611051224071_SetDB.resx">
-      <DependentUpon>201611051224071_SetDB.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{122863b6-d24b-4192-aec3-bdc206e3d09c}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611061537116_SetDB.resx">
+      <DependentUpon>201611061537116_SetDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

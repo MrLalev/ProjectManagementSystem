@@ -42,19 +42,21 @@ namespace ProjectManagementSystem.ViewModels.EmployeeVM
         [Required(ErrorMessage = "Please enter date of birth")]
         public DateTime DateOfBirth { get; set; }
 
+    
+        [Display(Name = "Position")]
+        [Required(ErrorMessage = "Please enter Position")]
+        public int PositionId { get; set; }
+
+        [Display(Name = "Team")]
+        [Required(ErrorMessage = "Please enter Team")]
+        public int TeamId { get; set; }
+
         [Display(Name = "Manager")]
         public int ManagerId { get; set; }
 
-        [Required(ErrorMessage = "Please enter position")]
-        [Display(Name = "Position")]
-        public int PositionId { get; set; }
-
-        [Required(ErrorMessage = "Please enter team")]
-        [Display(Name = "Team")]
-        public int TeamId { get; set; }
-
         [Display(Name = "Admin:")]
         public bool AdminRole { get; set; }
+
 
         public List<SelectListItem> ListManagers { get; set; }
         public List<SelectListItem> ListTeams { get; set; }

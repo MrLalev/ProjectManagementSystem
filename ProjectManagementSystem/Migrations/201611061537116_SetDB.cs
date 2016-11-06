@@ -96,11 +96,9 @@ namespace ProjectManagementSystem.Migrations
                         LogWork = c.Double(nullable: false),
                         Status = c.String(),
                         PercentageDone = c.Int(nullable: false),
-                        CreatorId_Id = c.Int(),
+                        CreatorId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Employees", t => t.CreatorId_Id)
-                .Index(t => t.CreatorId_Id);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Teams",
@@ -116,8 +114,6 @@ namespace ProjectManagementSystem.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Tasks", "CreatorId_Id", "dbo.Employees");
-            DropIndex("dbo.Tasks", new[] { "CreatorId_Id" });
             DropTable("dbo.Teams");
             DropTable("dbo.Tasks");
             DropTable("dbo.Projects");

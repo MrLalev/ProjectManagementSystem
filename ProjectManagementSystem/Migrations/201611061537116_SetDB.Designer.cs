@@ -13,7 +13,7 @@ namespace ProjectManagementSystem.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201611051224071_SetDB"; }
+            get { return "201611061537116_SetDB"; }
         }
         
         string IMigrationMetadata.Source
