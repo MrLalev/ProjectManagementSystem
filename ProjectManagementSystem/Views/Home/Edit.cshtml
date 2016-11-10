@@ -1,5 +1,5 @@
 ﻿@model ProjectManagementSystem.ViewModels.EmployeeVM.EditEmployeeVM
-
+@using System.Web.Mvc
 @{
     ViewBag.Title = "Edit";
 }
@@ -13,7 +13,7 @@
             {
                 timepicker: false,
                 format: 'd.m.Y'
-                });
+            });
     });
 </script>
 
@@ -22,7 +22,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>EditEmployeeVM</h4>
         <hr />
@@ -41,7 +41,7 @@
             @Html.LabelFor(model => model.SecondName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.SecondName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.SecondName, "", new { @class = "text-danger"})
+                @Html.ValidationMessageFor(model => model.SecondName, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -49,7 +49,7 @@
             @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger"})
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -57,15 +57,15 @@
             @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.Password, new { type = "password", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger"})
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.RePassword, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-               @Html.TextBoxFor(model => model.RePassword, new { type = "password", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.RePassword, "", new { @class = "text-danger"})
+                @Html.TextBoxFor(model => model.RePassword, new { type = "password", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RePassword, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -73,7 +73,7 @@
             @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger"})
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -81,7 +81,7 @@
             @Html.LabelFor(model => model.Adress, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.Adress, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Adress, "", new { @class = "text-danger"})
+                @Html.ValidationMessageFor(model => model.Adress, "", new { @class = "text-danger" })
             </div>
         </div>
 

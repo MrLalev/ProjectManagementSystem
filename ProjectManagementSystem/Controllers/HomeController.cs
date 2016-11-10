@@ -76,7 +76,7 @@ namespace ProjectManagementSystem.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Appointment");
+                    return RedirectToAction("Index", "Home");
                 }
             }
 
@@ -135,6 +135,7 @@ namespace ProjectManagementSystem.Controllers
                 model.Adress = employee.Adress;
                 model.DateOfBirth = employee.DateofBirth;
                 model.AdminRole = AuthenticationManager.LoggedEmployee.AdminRole;
+                this.FillList(model);
 
                 return View(model);
             }
@@ -168,6 +169,69 @@ namespace ProjectManagementSystem.Controllers
 
                 AuthenticationManager.Authenticate(AuthenticationManager.LoggedEmployee.Email, AuthenticationManager.LoggedEmployee.Password);
                 return RedirectToAction("Details", "Home");
+            }
+            public void FillList(EditEmployeeVM model)
+            {
+                EmployeeService EmployeeService = new EmployeeService();
+                List<Employee> managers = EmployeeService.GetAll().ToList();
+
+                model.ListManagers = new List<SelectListItem>();
+                model.ListManagers.Add(new SelectListItem() { Text = "---", Value = "0" });
+                foreach (var item in managers)
+                {
+                    if (item.Id != AuthenticationManager.LoggedEmployee.Id)
+                    {
+                        model.ListManagers.Add(new SelectListItem()
+                        {
+                            Text = item.FirstName + " " + item.LastName,
+                            Value = item.Id.ToString()
+                        });
+                    }
+
+                }
+
+                if (model.ListManagers.Count() > 0)
+                {
+                    model.ListManagers[0].Selected = true;
+                }
+
+                TeamService TeamService = new TeamService();
+                List<Team> teams = TeamService.GetAll().ToList();
+
+                model.ListTeams = new List<SelectListItem>();
+                foreach (var item in teams)
+                {
+                    model.ListTeams.Add(new SelectListItem()
+                    {
+                        Text = item.Name,
+                        Value = item.Id.ToString()
+                    });
+                }
+
+                if (model.ListTeams.Count() > 0)
+                {
+                    model.ListTeams[0].Selected = true;
+                }
+
+                PositionService PositionService = new PositionService();
+                List<Position> positions = PositionService.GetAll().ToList();
+
+                model.ListPositions = new List<SelectListItem>();
+                foreach (var item in positions)
+                {
+                    model.ListPositions.Add(new SelectListItem()
+                    {
+                        Text = item.Name,
+                        Value = item.Id.ToString()
+                    });
+
+                }
+
+                if (model.ListPositions.Count() > 0)
+                {
+                    model.ListPositions[0].Selected = true;
+                }
+
             }
         }
 }
