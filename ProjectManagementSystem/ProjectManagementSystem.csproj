@@ -138,6 +138,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuthenticationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidationAttributes\DateAttribute.cs" />
+    <Compile Include="ValidationAttributes\EmailAttribute.cs" />
     <Compile Include="ValidationAttributes\MatchValueAttribute.cs" />
     <Compile Include="ValidationAttributes\UniqueEmail.cs" />
     <Compile Include="ViewModels\BaseFilter.cs" />

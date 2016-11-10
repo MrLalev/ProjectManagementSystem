@@ -30,6 +30,7 @@ namespace ProjectManagementSystem.ViewModels.EmployeeVM
         public string RePassword { get; set; }
 
         [Required(ErrorMessage = "Please enter E-mail")]
+        [Email("Email")]
         [UniqueEmail("Id")]
         public string Email { get; set; }
 
@@ -40,6 +41,7 @@ namespace ProjectManagementSystem.ViewModels.EmployeeVM
         public string Phone { get; set; }
 
         [Required(ErrorMessage = "Please enter date of birth")]
+        [Date("DateOfBirth")]
         public DateTime DateOfBirth { get; set; }
 
     

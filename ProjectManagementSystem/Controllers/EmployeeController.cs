@@ -18,6 +18,7 @@ namespace ProjectManagementSystem.Controllers
             List<Employee> managers = EmployeeService.GetAll().ToList();
 
             model.ListManagers = new List<SelectListItem>();
+            model.ListManagers.Add(new SelectListItem() { Text = "---", Value = "0" });
             foreach (var item in managers)
             {
                 if (item.Id != AuthenticationManager.LoggedEmployee.Id)
@@ -47,7 +48,6 @@ namespace ProjectManagementSystem.Controllers
                     Text = item.Name,
                     Value = item.Id.ToString()
                 });
-
             }
 
             if (model.ListTeams.Count() > 0)
