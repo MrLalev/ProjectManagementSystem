@@ -1,4 +1,4 @@
-﻿@model ProjectManagementSystem.ViewModels.DepartmentVM.EditDepartmentVM
+﻿@model ProjectManagementSystem.ViewModels.TeamVM.EditTeamVM
 
 @{
     ViewBag.Title = "Edit";
@@ -11,7 +11,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>EditDepartmentVM</h4>
+        <h4>EditTeamVM</h4>
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.Id)
@@ -25,10 +25,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DepartmentId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextArea("Description", new { rows = 10, columns = 40, @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Description)
+                @Html.DropDownListFor(model => model.DepartmentId, Model.ListDepartments, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DepartmentId)
             </div>
         </div>
 

@@ -35,7 +35,12 @@ namespace ProjectManagementSystem.Controllers
 
             }
 
-            model.ListTask[0].Selected = true;
+
+            if (model.ListTask.Count() > 0)
+            {
+                model.ListTask[0].Selected = true;
+            }
+
         }
         public override void ExtraDelete(Comment comment)
         {

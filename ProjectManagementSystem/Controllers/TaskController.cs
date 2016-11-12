@@ -27,28 +27,54 @@ namespace ProjectManagementSystem.Controllers
                 });
 
             }
-
-            model.ListProjects[0].Selected = true;
-
-            EmployeeService EmployeeService = new EmployeeService();
-            List<Employee> managers = EmployeeService.GetAll().ToList();
-
-            model.ListAssignet = new List<SelectListItem>();
-            model.ListAssignet.Add(new SelectListItem() { Text = "", Value = null });
-            foreach (var item in managers)
+            if (model.ListProjects.Count() > 0)
             {
-                if (item.Id != AuthenticationManager.LoggedEmployee.Id)
-                {
-                    model.ListAssignet.Add(new SelectListItem()
-                    {
-                        Text = item.FirstName + " " + item.LastName,
-                        Value = item.Id.ToString()
-                    });
-                }
-
+                model.ListProjects[0].Selected = true;
             }
 
-            model.ListAssignet[0].Selected = true;
+            EmployeeService EmployeeService = new EmployeeService();
+            List<Employee> assignets = EmployeeService.GetAll(e => e.TeamId == AuthenticationManager.LoggedEmployee.TeamId).ToList();
+
+            model.ListAssignet = new List<SelectListItem>();
+            model.ListAssignet.Add(new SelectListItem() { Text = "---", Value = "0" });
+            foreach (var item in assignets)
+            {
+                model.ListAssignet.Add(new SelectListItem()
+                {
+                    Text = item.FirstName + " " + item.LastName,
+                    Value = item.Id.ToString()
+                });
+            }
+            if (model.ListAssignet.Count() > 0)
+            {
+                model.ListAssignet[0].Selected = true;
+            }
+
+            model.ListPercentage = new List<SelectListItem>();
+            for (int i = 0; i <= 100; i+=10)
+            {
+                model.ListPercentage.Add(new SelectListItem()
+                {
+                    Text = i.ToString() + " %",
+                    Value = i.ToString()
+                });
+            }
+            if (model.ListPercentage.Count() > 0)
+            {
+                model.ListPercentage[0].Selected = true;
+            }
+
+            model.ListStatus = new List<SelectListItem>();
+            model.ListStatus.Add(new SelectListItem() { Text = "New", Value = "New" });
+            model.ListStatus.Add(new SelectListItem() { Text = "In Progress", Value = "In Progress" });
+            model.ListStatus.Add(new SelectListItem() { Text = "Resolved", Value = "Resolved" });
+            model.ListStatus.Add(new SelectListItem() { Text = "Closed", Value = "Closed" });
+            model.ListStatus.Add(new SelectListItem() { Text = "Reopened", Value = "Reopend" });
+
+            if (model.ListPercentage.Count() > 0)
+            {
+                model.ListPercentage[0].Selected = true;
+            }
         }
         public override void ExtraDelete(Task task)
         {

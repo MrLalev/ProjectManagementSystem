@@ -28,7 +28,10 @@ namespace ProjectManagementSystem.Controllers
 
             }
 
-            model.ListProjects[0].Selected = true;
+            if (model.ListProjects.Count() > 0)
+            {
+                model.ListProjects[0].Selected = true;
+            }
         }
 
         public override void ExtraDelete(Project_Report rport)

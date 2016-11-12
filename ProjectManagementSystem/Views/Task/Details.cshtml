@@ -1,0 +1,82 @@
+﻿@model ProjectManagementSystem.ViewModels.TaskVM.DetailsTaskVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DetailsTaskVM</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PercentageDone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PercentageDone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LogWork)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogWork)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssignetId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssignetId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatorId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

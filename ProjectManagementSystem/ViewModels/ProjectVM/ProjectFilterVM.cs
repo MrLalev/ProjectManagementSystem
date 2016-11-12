@@ -1,5 +1,6 @@
 ﻿using DataAccess.Entity;
 using ProjectManagementSystem.Filters;
+using ProjectManagementSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,8 @@ namespace ProjectManagementSystem.ViewModels.ProjectVM
         public string State { get; set; }
         public override Expression<Func<Project, bool>> GenerateFilter()
         {
-            return (p => (String.IsNullOrEmpty(Name) || p.Name.Contains(Name)) &&
-                         (String.IsNullOrEmpty(Convert.ToString(StartDate)) || p.StartDate == StartDate) &&
-                         (String.IsNullOrEmpty(Convert.ToString(EndDate)) || p.EndDate == EndDate) &&
+            return (p => (p.TeamId == AuthenticationManager.LoggedEmployee.TeamId) && 
+                         (String.IsNullOrEmpty(Name) || p.Name.Contains(Name)) &&
                          (String.IsNullOrEmpty(State) || p.Finished == (State.ToLower() == "finished" ? true : false)));
         }
     }

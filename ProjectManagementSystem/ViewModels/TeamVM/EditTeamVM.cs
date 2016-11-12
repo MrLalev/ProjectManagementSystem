@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ProjectManagementSystem.ViewModels.TeamVM
 {
@@ -15,5 +16,7 @@ namespace ProjectManagementSystem.ViewModels.TeamVM
         [Required(ErrorMessage = "Please enter Department")]
         [Display(Name = "Department")]
         public int DepartmentId { get; set; }
+
+        public List<SelectListItem> ListDepartments { get; set; }
     }
 }

@@ -30,5 +30,7 @@ namespace ProjectManagementSystem.ViewModels.TaskVM
 
         public List<SelectListItem> ListAssignet { get; set; }
         public List<SelectListItem> ListProjects { get; set; }
+        public List<SelectListItem> ListPercentage { get; set; }
+        public List<SelectListItem> ListStatus { get; set; }
     }
 }
