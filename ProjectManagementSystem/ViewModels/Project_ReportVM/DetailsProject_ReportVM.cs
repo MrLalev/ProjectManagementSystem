@@ -12,12 +12,12 @@ namespace ProjectManagementSystem.ViewModels.Project_ReportVM
         public string Title { get; set; }
 
         [Display(Name = "Project: ")]
-        public int ProjectId { get; set; }
+        public string Project { get; set; }
 
         [Display(Name = "Content: ")]
         public string Content { get; set; }
 
         [Display(Name = "Creator: ")]
-        public int CreatorId { get; set; }
+        public string Creator { get; set; }
     }
 }

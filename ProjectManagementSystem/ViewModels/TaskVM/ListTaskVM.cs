@@ -8,5 +8,8 @@ namespace ProjectManagementSystem.ViewModels.TaskVM
 {
     public class ListTaskVM : BaseVMList<Task, TaskFilterVM>
     {
+        public string[] creators;
+        public string[] assignets;
+        public string[] projects;
     }
 }

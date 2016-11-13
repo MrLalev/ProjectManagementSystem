@@ -8,5 +8,7 @@ namespace ProjectManagementSystem.ViewModels.CommentVM
 {
     public class ListCommentVM : BaseVMList<Comment, CommentFilterVM>
     {
+        public string[] creators;
+        public string[] tasks;
     }
 }

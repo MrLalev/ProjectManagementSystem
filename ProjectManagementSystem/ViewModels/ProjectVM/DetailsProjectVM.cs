@@ -18,7 +18,7 @@ namespace ProjectManagementSystem.ViewModels.ProjectVM
         public DateTime EndDate { get; set; }
 
         [Display(Name = "Team: ")]
-        public int TeamId { get; set; }
+        public string Team { get; set; }
 
         [Display(Name = "Finished: ")]
         public bool Finished { get; set; }

@@ -29,6 +29,18 @@ namespace ProjectManagementSystem.Controllers
 
             model.ListTeams[0].Selected = true;
         }
+
+        public override void AddAdditionalInfo(ListProjectVM model)
+        {
+            TeamService TeamService = new TeamService();
+            model.teams = new string[model.Items.Count()];
+
+            for (int i = 0; i < model.Items.Count(); i++)
+            {
+                model.teams[i] = TeamService.GetById(model.Items[i].TeamId).Name;
+            }
+        }
+
         public override void ExtraDelete(Project project)
         {
             TaskService TaskService = new TaskService();
@@ -82,7 +94,8 @@ namespace ProjectManagementSystem.Controllers
             model.Name = project.Name;
             model.StartDate = project.StartDate;
             model.EndDate = project.EndDate;
-            model.TeamId = project.TeamId;
+            TeamService TeamService = new TeamService();
+            model.Team = TeamService.GetById(project.TeamId).Name;
             model.Finished = project.Finished; 
         }
 

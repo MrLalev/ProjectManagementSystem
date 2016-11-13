@@ -8,5 +8,7 @@ namespace ProjectManagementSystem.ViewModels.Project_ReportVM
 {
     public class ListProject_ReportVM : BaseVMList<Project_Report, Project_ReportFilterVM>
     {
+        public string[] projects;
+        public string[] creators;
     }
 }

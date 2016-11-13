@@ -34,6 +34,25 @@ namespace ProjectManagementSystem.Controllers
             }
         }
 
+        public override void AddAdditionalInfo(ListProject_ReportVM model)
+        {
+            ProjectService ProjectService = new ProjectService();
+            model.projects = new string[model.Items.Count()];
+
+            for (int i = 0; i < model.Items.Count(); i++)
+            {
+                model.projects[i] = ProjectService.GetById(model.Items[i].ProjectId).Name;
+            }
+
+            EmployeeService EmployeeService = new EmployeeService();
+            model.creators = new string[model.Items.Count()];
+
+            for (int i = 0; i < model.Items.Count(); i++)
+            {
+                model.creators[i] = EmployeeService.GetById(model.Items[i].CreatorId).FirstName + " " + EmployeeService.GetById(model.Items[i].CreatorId).LastName;
+            }
+
+        }
         public override void ExtraDelete(Project_Report rport)
         {
         }
@@ -60,10 +79,12 @@ namespace ProjectManagementSystem.Controllers
             model.Id = position.Id;
             model.Title = position.Title;
             model.Content = position.Content;
-            model.ProjectId = position.ProjectId;
-            model.CreatorId = position.CreatorId;
+            ProjectService ProjectService = new ProjectService();
+            model.Project = ProjectService.GetById(position.ProjectId).Name;
+            EmployeeService EmployeeService = new EmployeeService();
+            model.Creator = EmployeeService.GetById(position.CreatorId).FirstName + " " + EmployeeService.GetById(position.CreatorId).LastName;
         }
-
+ 
         public override BaseService<Project_Report> SetService()
         {
             return new Project_ReportService();

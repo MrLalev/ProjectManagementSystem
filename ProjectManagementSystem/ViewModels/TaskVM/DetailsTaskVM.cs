@@ -24,12 +24,12 @@ namespace ProjectManagementSystem.ViewModels.TaskVM
         public int LogWork { get; set; }
 
         [Display(Name = "Assignet:")]
-        public int AssignetId { get; set; }
+        public string Assignet { get; set; }
 
         [Display(Name = "Project: ")]
-        public int ProjectId { get; set; }
+        public string Project { get; set; }
 
         [Display(Name = "Creator: ")]
-        public int CreatorId { get; set; }
+        public string Creator { get; set; }
     }
 }

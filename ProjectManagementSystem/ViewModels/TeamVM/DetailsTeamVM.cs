@@ -12,6 +12,6 @@ namespace ProjectManagementSystem.ViewModels.TeamVM
         public string Name { get; set; }
 
         [Display(Name = "Department")]
-        public int DepartmentId { get; set; }
+        public string Department { get; set; }
     }
 }

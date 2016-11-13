@@ -75,7 +75,38 @@ namespace ProjectManagementSystem.Controllers
             }
 
         }
+        public override void AddAdditionalInfo(ListEmployeeVM model)
+        {
+            TeamService TeamService = new TeamService();
+            model.teams = new string[model.Items.Count()];
 
+            for (int i = 0; i < model.Items.Count(); i++)
+            {
+                model.teams[i] = TeamService.GetById(model.Items[i].TeamId).Name;
+            }
+
+            PositionService PositionService = new PositionService();
+            model.positions = new string[model.Items.Count()];
+
+            for (int i = 0; i < model.Items.Count(); i++)
+            {
+                model.positions[i] = PositionService.GetById(model.Items[i].PositionId).Name;
+            }
+            EmployeeService EmployeeService = new EmployeeService();
+            model.managers = new string[model.Items.Count()];
+            for (int i = 0; i < model.Items.Count(); i++)
+            {
+                if (model.Items[i].ManagerId != 0)
+                {
+                    model.managers[i] = EmployeeService.GetById(model.Items[i].ManagerId).FirstName + " " + EmployeeService.GetById(model.Items[i].ManagerId).LastName;
+                }
+                else
+                {
+                    model.managers[i] = "";
+                }
+
+            }
+        }
         public override void ExtraDelete(Employee employee)
         {
             TaskService TaskService = new TaskService();
@@ -136,9 +167,12 @@ namespace ProjectManagementSystem.Controllers
             model.SecondName = employee.SecondName;
             model.LastName = employee.LastName;
             model.Phone = employee.Phone;
-            model.ManagerId = employee.ManagerId;
-            model.PositionId = employee.PositionId;
-            model.TeamId = employee.TeamId;
+            EmployeeService EmployeeService = new EmployeeService();
+            model.Manager = employee.ManagerId != 0 ? EmployeeService.GetById(employee.ManagerId).FirstName + " " + EmployeeService.GetById(employee.ManagerId).LastName : "";
+            PositionService PositionService = new PositionService();
+            model.Position = PositionService.GetById(employee.PositionId).Name;
+            TeamService TeamService = new TeamService();
+            model.Team = TeamService.GetById(employee.TeamId).Name;
             model.Adress = employee.Adress;
             model.DateOfBirth = employee.DateofBirth;
             model.AdminRole = employee.AdminRole;

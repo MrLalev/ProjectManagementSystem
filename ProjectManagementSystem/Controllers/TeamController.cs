@@ -35,7 +35,16 @@ namespace ProjectManagementSystem.Controllers
             {
                 model.ListDepartments[0].Selected = true;
             }
+        }
+        public override void AddAdditionalInfo(ListTeamVM model)
+        {
+            DepartmentService DepartmentService = new DepartmentService();
+            model.departmentNames = new string[model.Items.Count()];
 
+            for (int i = 0; i < model.Items.Count(); i++)
+            {
+                model.departmentNames[i] = DepartmentService.GetById(model.Items[i].DepartmentId).Name;
+            }
         }
 
         public override void PopulateItem(Team team, EditTeamVM model)
@@ -56,7 +65,8 @@ namespace ProjectManagementSystem.Controllers
         {
             model.Id = team.Id;
             model.Name = team.Name;
-            model.DepartmentId = team.DepartmentId;
+            DepartmentService DepartmentService = new DepartmentService();
+            model.Department = DepartmentService.GetById(team.DepartmentId).Name;
         }
 
         public override BaseService<Team> SetService()

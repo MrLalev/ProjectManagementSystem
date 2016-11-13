@@ -30,13 +30,13 @@ namespace ProjectManagementSystem.ViewModels.EmployeeVM
         public DateTime DateOfBirth { get; set; }
 
         [Display(Name = "Manager")]
-        public int ManagerId { get; set; }
+        public string Manager { get; set; }
 
         [Display(Name = "Position")]
-        public int PositionId { get; set; }
+        public string Position { get; set; }
 
         [Display(Name = "Team")]
-        public int TeamId { get; set; }
+        public string Team { get; set; }
 
         [Display(Name = "Admin:")]
         public bool AdminRole { get; set; }

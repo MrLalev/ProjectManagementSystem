@@ -45,7 +45,24 @@ namespace ProjectManagementSystem.Controllers
         public override void ExtraDelete(Comment comment)
         {
         }
+        public override void AddAdditionalInfo(ListCommentVM model)
+        {
+            TaskService TaskService = new TaskService();
+            model.tasks = new string[model.Items.Count()];
 
+            for (int i = 0; i < model.Items.Count(); i++)
+            {
+                model.tasks[i] = TaskService.GetById(model.Items[i].TaskId).Title;
+            }
+
+            EmployeeService EmployeeService = new EmployeeService();
+            model.creators = new string[model.Items.Count()];
+
+            for (int i = 0; i < model.Items.Count(); i++)
+            {
+                model.creators[i] = EmployeeService.GetById(model.Items[i].CreatorId).FirstName + " " + EmployeeService.GetById(model.Items[i].CreatorId).LastName;
+            }
+        }
         public override void PopulateItem(Comment comment, EditCommentVM model)
         {
             comment.Id = model.Id;
@@ -68,8 +85,10 @@ namespace ProjectManagementSystem.Controllers
             model.Id = comment.Id;
             model.Title = comment.Title;
             model.Content = comment.Content;
-            model.TaskId = comment.TaskId;
-            model.CreatorId = comment.CreatorId;
+            TaskService TaskService = new TaskService();
+            model.Task = TaskService.GetById(comment.TaskId).Title;
+            EmployeeService EmployeeService = new EmployeeService();
+            model.Creator = EmployeeService.GetById(comment.CreatorId).FirstName + " " + EmployeeService.GetById(comment.CreatorId).LastName;
         }
 
         public override BaseService<Comment> SetService()

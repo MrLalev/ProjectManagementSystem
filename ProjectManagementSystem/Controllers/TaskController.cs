@@ -76,6 +76,39 @@ namespace ProjectManagementSystem.Controllers
                 model.ListPercentage[0].Selected = true;
             }
         }
+
+        public override void AddAdditionalInfo(ListTaskVM model)
+        {
+            ProjectService ProjectService = new ProjectService();
+            model.projects = new string[model.Items.Count()];
+
+            for (int i = 0; i < model.Items.Count(); i++)
+            {
+                model.projects[i] = ProjectService.GetById(model.Items[i].ProjectId).Name;
+            }
+
+            EmployeeService EmployeeService = new EmployeeService();
+            model.creators = new string[model.Items.Count()];
+
+            for (int i = 0; i < model.Items.Count(); i++)
+            {
+                model.creators[i] = EmployeeService.GetById(model.Items[i].CreatorId).FirstName + " " + EmployeeService.GetById(model.Items[i].CreatorId).LastName;
+            }
+
+            model.assignets = new string[model.Items.Count()];
+            for (int i = 0; i < model.Items.Count(); i++)
+            {
+                if (model.Items[i].CreatorId != 0)
+                {
+                    model.assignets[i] = EmployeeService.GetById(model.Items[i].CreatorId).FirstName + " " + EmployeeService.GetById(model.Items[i].CreatorId).LastName;
+                }
+                else 
+                {
+                    model.assignets[i] = "";
+                }
+               
+            }
+        }
         public override void ExtraDelete(Task task)
         {
             CommentService CommentService = new CommentService();
@@ -114,11 +147,13 @@ namespace ProjectManagementSystem.Controllers
         {
             model.Id = task.Id;
             model.Title = task.Title;
-            model.AssignetId = task.AssignetId;
-            model.CreatorId = task.CreatorId;
+            EmployeeService EmployeeService = new EmployeeService();
+            model.Assignet = task.AssignetId != 0 ? EmployeeService.GetById(task.AssignetId).FirstName + " " + EmployeeService.GetById(task.AssignetId).LastName : "";
+            model.Creator = EmployeeService.GetById(task.CreatorId).FirstName + " " + EmployeeService.GetById(task.CreatorId).LastName;
             model.Content = task.Description;
             model.PercentageDone = task.PercentageDone;
-            model.ProjectId = task.ProjectId;
+            ProjectService ProjectService = new ProjectService();
+            model.Project = ProjectService.GetById(task.ProjectId).Name;
             model.Status = task.Status;
         }
 

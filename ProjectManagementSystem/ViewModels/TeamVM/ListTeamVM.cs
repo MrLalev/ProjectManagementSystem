@@ -8,5 +8,6 @@ namespace ProjectManagementSystem.ViewModels.TeamVM
 {
     public class ListTeamVM : BaseVMList<Team, TeamFilterVM>
     {
+        public string[] departmentNames;
     }
 }

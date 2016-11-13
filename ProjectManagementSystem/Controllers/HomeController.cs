@@ -106,9 +106,12 @@ namespace ProjectManagementSystem.Controllers
                 model.LastName = employee.LastName;
                 model.Phone = employee.Phone;
                 model.AdminRole = employee.AdminRole;
-                model.ManagerId = employee.ManagerId;
-                model.PositionId = employee.PositionId;
-                model.TeamId = employee.TeamId;
+                EmployeeService EmployeeService = new EmployeeService();
+                model.Manager = employee.ManagerId != 0 ? EmployeeService.GetById(employee.ManagerId).FirstName + " " + EmployeeService.GetById(employee.ManagerId).LastName : "";
+                PositionService PositionService = new PositionService();
+                model.Position = PositionService.GetById(employee.PositionId).Name;
+                TeamService TeamService = new TeamService();
+                model.Team = TeamService.GetById(employee.TeamId).Name;
                 model.Adress = employee.Adress;
                 model.DateOfBirth = employee.DateofBirth;
 

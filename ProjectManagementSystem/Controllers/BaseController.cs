@@ -31,6 +31,9 @@ namespace ProjectManagementSystem.Controllers
         public virtual void FillList(E model)
         {
         }
+        public virtual void AddAdditionalInfo(L model)
+        {
+        }
 
         public virtual void PopulateModel(L model)
         {
@@ -43,6 +46,8 @@ namespace ProjectManagementSystem.Controllers
 
             int resultCount = service.Count(filter);
             model.Pager.PagesCount = (int)Math.Ceiling(resultCount / (double)model.Pager.PageSize);
+
+            AddAdditionalInfo(model);
         }
 
         public ActionResult Index()

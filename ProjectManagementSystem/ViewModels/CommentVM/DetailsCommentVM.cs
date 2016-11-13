@@ -12,12 +12,12 @@ namespace ProjectManagementSystem.ViewModels.CommentVM
         public string Title { get; set; }
 
         [Display(Name = "Task: ")]
-        public int TaskId { get; set; }
+        public string Task { get; set; }
 
         [Display(Name = "Content: ")]
         public string Content { get; set; }
 
         [Display(Name = "Creator: ")]
-        public int CreatorId { get; set; }
+        public string Creator { get; set; }
     }
 }
