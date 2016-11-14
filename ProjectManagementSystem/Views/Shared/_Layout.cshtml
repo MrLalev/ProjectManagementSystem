@@ -24,9 +24,7 @@
                     @if (ProjectManagementSystem.Models.AuthenticationManager.LoggedEmployee != null)
                     {
                          <li>@Html.ActionLink("Projects", "index", "Project")</li>
-                         <li>@Html.ActionLink("Reports", "index", "Project_Report")</li>
                          <li>@Html.ActionLink("Tasks", "index", "Task")</li>
-                         <li>@Html.ActionLink("Comments", "index", "Comment")</li>
                     }
                     @if (ProjectManagementSystem.Models.AuthenticationManager.LoggedEmployee != null && ProjectManagementSystem.Models.AuthenticationManager.LoggedEmployee.AdminRole == true)
                     {

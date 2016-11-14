@@ -1,10 +1,13 @@
 ﻿using DataAccess.Entity;
 using DataAccess.Service;
 using ProjectManagementSystem.Models;
+using ProjectManagementSystem.ViewModels;
+using ProjectManagementSystem.ViewModels.CommentVM;
 using ProjectManagementSystem.ViewModels.TaskVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -27,9 +30,10 @@ namespace ProjectManagementSystem.Controllers
                 });
 
             }
+
             if (model.ListProjects.Count() > 0)
             {
-                model.ListProjects[0].Selected = true;
+                    model.ListProjects[0].Selected = true;
             }
 
             EmployeeService EmployeeService = new EmployeeService();
@@ -75,6 +79,7 @@ namespace ProjectManagementSystem.Controllers
             {
                 model.ListPercentage[0].Selected = true;
             }
+
         }
 
         public override void AddAdditionalInfo(ListTaskVM model)
@@ -155,6 +160,30 @@ namespace ProjectManagementSystem.Controllers
             ProjectService ProjectService = new ProjectService();
             model.Project = ProjectService.GetById(task.ProjectId).Name;
             model.Status = task.Status;
+
+            model.CommentsVM = new ListCommentVM();
+
+            CommentService CommentService = new CommentService();
+            List<Comment> comments = CommentService.GetAll(c => c.TaskId == model.Id).ToList();
+
+            model.CommentsVM.Items = new List<Comment>();
+            foreach (Comment item in comments)
+            {
+                model.CommentsVM.Items.Add(item);
+            }
+            CommentController commentCtrl = new CommentController();
+            commentCtrl.AddAdditionalInfo(model.CommentsVM);
+
+            model.CommentsVM.Pager = new PagerVM();
+            model.CommentsVM.Filter = new CommentFilterVM();
+            model.CommentsVM.Pager.Prefix = "CommentsVM.Pager.";
+            model.CommentsVM.Filter.Prefix = "CommentsVM.Filter.";
+            model.CommentsVM.Filter.Pager = model.CommentsVM.Pager;
+
+            TryUpdateModel(model);
+
+            model.CommentsVM.Pager.PagesCount = (int)Math.Ceiling(model.CommentsVM.Items.Count / (double)model.CommentsVM.Pager.PageSize);
+            model.CommentsVM.Items = model.CommentsVM.Items.Skip(model.CommentsVM.Pager.PageSize * (model.CommentsVM.Pager.CurrentPage - 1)).Take(model.CommentsVM.Pager.PageSize).ToList();
         }
 
         public override BaseService<Task> SetService()

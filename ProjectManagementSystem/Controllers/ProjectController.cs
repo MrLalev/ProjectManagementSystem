@@ -1,9 +1,13 @@
 ﻿using DataAccess.Entity;
 using DataAccess.Service;
+using ProjectManagementSystem.ViewModels;
+using ProjectManagementSystem.ViewModels.CommentVM;
+using ProjectManagementSystem.ViewModels.Project_ReportVM;
 using ProjectManagementSystem.ViewModels.ProjectVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -96,7 +100,34 @@ namespace ProjectManagementSystem.Controllers
             model.EndDate = project.EndDate;
             TeamService TeamService = new TeamService();
             model.Team = TeamService.GetById(project.TeamId).Name;
-            model.Finished = project.Finished; 
+            model.Finished = project.Finished;
+
+
+            model.Project_ReportVM = new ListProject_ReportVM();
+
+            Project_ReportService Project_ReportService = new Project_ReportService();
+            List<Project_Report> reports = Project_ReportService.GetAll(c => c.ProjectId == model.Id).ToList();
+
+            model.Project_ReportVM.Items = new List<Project_Report>();
+            foreach (Project_Report item in reports)
+            {
+                model.Project_ReportVM.Items.Add(item);
+            }
+
+            Project_ReportController reportsCtrl = new Project_ReportController();
+            reportsCtrl.AddAdditionalInfo(model.Project_ReportVM);
+
+            model.Project_ReportVM.Pager = new PagerVM();
+            model.Project_ReportVM.Filter = new Project_ReportFilterVM();
+            model.Project_ReportVM.Pager.Prefix = "Project_ReportVM.Pager.";
+            model.Project_ReportVM.Filter.Prefix = "Project_ReportVM.Filter.";
+            model.Project_ReportVM.Filter.Pager = model.Project_ReportVM.Pager;
+
+            TryUpdateModel(model);
+
+            model.Project_ReportVM.Pager.PagesCount = (int)Math.Ceiling(model.Project_ReportVM.Items.Count / (double)model.Project_ReportVM.Pager.PageSize);
+            model.Project_ReportVM.Items = model.Project_ReportVM.Items.Skip(model.Project_ReportVM.Pager.PageSize * (model.Project_ReportVM.Pager.CurrentPage - 1)).Take(model.Project_ReportVM.Pager.PageSize).ToList();
+        
         }
 
         public override BaseService<Project> SetService()

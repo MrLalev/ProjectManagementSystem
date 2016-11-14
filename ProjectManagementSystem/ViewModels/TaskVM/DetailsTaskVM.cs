@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagementSystem.ViewModels.CommentVM;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -31,5 +32,7 @@ namespace ProjectManagementSystem.ViewModels.TaskVM
 
         [Display(Name = "Creator: ")]
         public string Creator { get; set; }
+
+        public ListCommentVM CommentsVM { get; set; }
     }
 }

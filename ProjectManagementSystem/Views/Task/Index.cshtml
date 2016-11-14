@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Tasks</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -30,9 +30,11 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = Model.Items[i].Id }) |
             @Html.ActionLink("Details", "Details", new { id = Model.Items[i].Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = Model.Items[i].Id })
+            @Html.ActionLink("Delete", "Delete", new { id = Model.Items[i].Id }) |
+            @Html.ActionLink("Create Comment", "Create", "Comment", new { id = Model.Items[i].Id }, null)
         </td>
     </tr>
 }
 
 </table>
+@Html.Partial("~/Views/Shared/_Pager.cshtml", Model.Pager)

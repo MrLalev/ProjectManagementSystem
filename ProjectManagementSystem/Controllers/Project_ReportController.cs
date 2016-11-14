@@ -30,7 +30,15 @@ namespace ProjectManagementSystem.Controllers
 
             if (model.ListProjects.Count() > 0)
             {
-                model.ListProjects[0].Selected = true;
+
+                if (model.ProjectId != 0)
+                {
+                    model.ListProjects.Find(p => p.Value == model.ProjectId.ToString()).Selected = true;
+                }
+                else
+                {
+                    model.ListProjects[0].Selected = true;
+                }
             }
         }
 

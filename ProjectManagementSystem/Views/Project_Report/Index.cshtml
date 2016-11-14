@@ -2,33 +2,5 @@
 
 @{
     ViewBag.Title = "Index";
+    Response.Redirect("~/Project/Index");
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>Title</th>
-        <th>Project</th>
-        <th>Creator</th>
-        <th>Options</th>
-    </tr>
-
-@for (int i = 0; i < Model.Items.Count(); i++ )
-{
-    <tr>
-        <td>@Model.Items[i].Title</td>
-        <td>@Model.projects[i]</td>
-        <td>@Model.creators[i]</td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.Items[i].Id }) |
-            @Html.ActionLink("Details", "Details", new { id = Model.Items[i].Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = Model.Items[i].Id })
-        </td>
-    </tr>
-}
-
-</table>

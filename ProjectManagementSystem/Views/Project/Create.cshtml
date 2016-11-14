@@ -22,14 +22,13 @@
             });
     });
 </script>
-<h2>Create</h2>
+<h2>Create Project</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>EditProjectVM</h4>
         <hr />
         @Html.ValidationSummary(true)
 

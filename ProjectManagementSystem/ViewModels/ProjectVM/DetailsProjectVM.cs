@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagementSystem.ViewModels.Project_ReportVM;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -22,5 +23,7 @@ namespace ProjectManagementSystem.ViewModels.ProjectVM
 
         [Display(Name = "Finished: ")]
         public bool Finished { get; set; }
+
+        public ListProject_ReportVM Project_ReportVM { get; set; }
     }
 }

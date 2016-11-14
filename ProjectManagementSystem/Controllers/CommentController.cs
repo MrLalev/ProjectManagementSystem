@@ -38,9 +38,16 @@ namespace ProjectManagementSystem.Controllers
 
             if (model.ListTask.Count() > 0)
             {
-                model.ListTask[0].Selected = true;
-            }
+                if (model.TaskId != 0)
+                {
+                    model.ListTask.Find(p => p.Value == model.TaskId.ToString()).Selected = true;
+                }
+                else
+                {
+                    model.ListTask[0].Selected = true;
+                }
 
+            }
         }
         public override void ExtraDelete(Comment comment)
         {

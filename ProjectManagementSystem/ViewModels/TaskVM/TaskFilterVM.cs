@@ -1,5 +1,7 @@
 ﻿using DataAccess.Entity;
+using DataAccess.Service;
 using ProjectManagementSystem.Filters;
+using ProjectManagementSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +20,8 @@ namespace ProjectManagementSystem.ViewModels.TaskVM
 
         public override Expression<Func<Task, bool>> GenerateFilter()
         {
-            return (p => (String.IsNullOrEmpty(Title) || p.Title.Contains(Title)) &&
+            return (p => (p.AssignetId == AuthenticationManager.LoggedEmployee.Id || p.CreatorId == AuthenticationManager.LoggedEmployee.Id) && 
+                         (String.IsNullOrEmpty(Title) || p.Title.Contains(Title)) &&
                          (String.IsNullOrEmpty(Status) || p.Status == Status));
         }
     }
