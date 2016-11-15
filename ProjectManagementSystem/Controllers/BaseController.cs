@@ -50,6 +50,7 @@ namespace ProjectManagementSystem.Controllers
             AddAdditionalInfo(model);
         }
 
+        [AccessFilterAttribute]
         public ActionResult Index()
         {
             L model = new L();
@@ -64,7 +65,7 @@ namespace ProjectManagementSystem.Controllers
 
             return View(model);
         }
-
+        [AccessFilterAttribute]
         [HttpGet]
         public ActionResult Create()
         {
@@ -94,6 +95,7 @@ namespace ProjectManagementSystem.Controllers
             return RedirectToAction("Index");
         }
 
+        [AccessFilterAttribute]
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -121,6 +123,7 @@ namespace ProjectManagementSystem.Controllers
             return RedirectToAction("Index");
         }
 
+        [AccessFilterAttribute]
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -154,6 +157,7 @@ namespace ProjectManagementSystem.Controllers
             return RedirectToAction("Index");
         }
 
+        [AccessFilterAttribute]
         [HttpGet]
         public ActionResult Details(int id)
         {

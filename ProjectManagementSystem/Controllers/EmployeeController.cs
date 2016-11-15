@@ -149,6 +149,7 @@ namespace ProjectManagementSystem.Controllers
             model.Email = employee.Email;
             model.FirstName = employee.FirstName;
             model.SecondName = employee.SecondName;
+            model.Password = employee.Password;
             model.LastName = employee.LastName;
             model.Phone = employee.Phone;
             model.ManagerId = employee.ManagerId;

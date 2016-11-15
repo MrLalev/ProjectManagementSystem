@@ -2,9 +2,22 @@
 
 @{
     ViewBag.Title = "Index";
+
 }
 
 <h2>Projects</h2>
+
+@if (Model.Items.FindAll(i => i.EndDate > DateTime.Now && i.EndDate <= DateTime.Now.AddDays(5)).Count > 0)
+{
+    <div class="alert alert-danger">
+    <ul>
+        @foreach (var item in Model.Items.FindAll(i => i.EndDate > DateTime.Now && i.EndDate <= DateTime.Now.AddDays(5)))
+        {
+            <li>Project @item.Name will end soon</li>
+        }
+    </ul>
+</div>
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")

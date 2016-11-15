@@ -131,6 +131,7 @@ namespace ProjectManagementSystem.Controllers
                 model.FirstName = employee.FirstName;
                 model.SecondName = employee.SecondName;
                 model.LastName = employee.LastName;
+                model.Password = employee.Password;
                 model.Phone = employee.Phone;
                 model.ManagerId = employee.ManagerId;
                 model.PositionId = employee.PositionId;

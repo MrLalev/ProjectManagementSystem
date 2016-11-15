@@ -124,9 +124,11 @@
     <Compile Include="Controllers\Project_ReportController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
+    <Compile Include="Filters\AccessFilterAttribute.cs" />
     <Compile Include="Filters\AuthenticationFilterAttribute.cs" />
     <Compile Include="Filters\FilterByAttribute.cs" />
     <Compile Include="Filters\FilterDropDownAttribute.cs" />
+    <Compile Include="Filters\HttpActionContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

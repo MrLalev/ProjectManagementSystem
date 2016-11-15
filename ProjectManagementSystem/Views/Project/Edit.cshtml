@@ -20,6 +20,9 @@
                 timepicker: false,
                 format: 'd.m.Y'
             });
+
+        document.getElementById("StartDate").value = "@Model.StartDate";
+        document.getElementById("EndDate").value = "@Model.EndDate";
     });
 </script>
 <h2>Edit Project</h2>

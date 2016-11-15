@@ -12,8 +12,14 @@
         $('#DateOfBirth').datetimepicker(
             {
                 timepicker: false,
+                startDate: '@DateTime.Now.AddYears(-18)',
+                formatDate: 'd.m.Y',
                 format: 'd.m.Y'
-                });
+            });
+
+        document.getElementById("DateOfBirth").value = "@Model.DateOfBirth";
+        document.getElementById("Password").value = "@Model.Password";
+        document.getElementById("RePassword").value = "@Model.Password";
     });
 </script>
 
