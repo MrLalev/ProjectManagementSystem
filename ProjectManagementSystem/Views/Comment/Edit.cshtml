@@ -2,8 +2,16 @@
 
 @{
     ViewBag.Title = "Edit";
+    DataAccess.Service.CommentService service = new DataAccess.Service.CommentService();
+    var id =  service.GetById(Convert.ToInt32(this.ViewContext.RouteData.Values["id"])).TaskId;
 }
 
+<script src="~/Scripts/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#TaskId").val(@id);
+    });
+</script>
 <h2>Edit Comment</h2>
 
 @using (Html.BeginForm())

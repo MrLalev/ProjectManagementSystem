@@ -21,7 +21,10 @@ namespace ProjectManagementSystem.Controllers
 
             foreach (var item in projects)
             {
-                tasks = TaskService.GetAll(t=> t.ProjectId == item.Id).ToList();
+                foreach (var task in TaskService.GetAll(t => t.ProjectId == item.Id).ToList())
+                {
+                    tasks.Add(task);
+                }
             }
 
             model.ListTask = new List<SelectListItem>();

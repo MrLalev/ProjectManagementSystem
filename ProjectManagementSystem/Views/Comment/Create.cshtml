@@ -2,8 +2,15 @@
 
 @{
     ViewBag.Title = "Create";
-}
 
+    var id = this.ViewContext.RouteData.Values["id"].ToString();
+}
+<script src="~/Scripts/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#TaskId").val(@id);
+    });
+</script>
 <h2>Create Task</h2>
 
 @using (Html.BeginForm()) 

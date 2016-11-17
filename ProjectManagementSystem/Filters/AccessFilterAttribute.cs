@@ -20,29 +20,52 @@ namespace ProjectManagementSystem.Filters
                 {
                     case "Comment":
                         {
-                           CommentService service = new CommentService();
-                           if (keys.Count() == 4)
-                           {
-                               if (AuthenticationManager.LoggedEmployee.Id != service.GetById(Convert.ToInt32(keys[3])).CreatorId)
-                               {
-                                   filterContext.Result = new RedirectResult("/Task/Index");
-                                   return;
-                               }
-                           }
+                            if (keys.Count() >= 3)
+                            {
+                                if (keys[2] != "Create")
+                                {
+                                    CommentService service = new CommentService();
+                                    if (keys.Count() == 4)
+                                    {
+                                        if (AuthenticationManager.LoggedEmployee.Id != service.GetById(Convert.ToInt32(keys[3])).CreatorId)
+                                        {
+                                            filterContext.Result = new RedirectResult("/Task/Index");
+                                            return;
+                                        }
+                                    }
 
+                                }
+                                else
+                                {
+                                    goto case "Task";
+                                }
+                            }
+                          
                             break;
                        }
                     case "Project_Report":
                         {
-                            Project_ReportService service = new Project_ReportService();
-                            if (keys.Count() == 4)
+                            if (keys.Count() >= 3)
                             {
-                                if (AuthenticationManager.LoggedEmployee.Id != service.GetById(Convert.ToInt32(keys[3])).CreatorId)
+                                if (keys[2] != "Create")
                                 {
-                                    filterContext.Result = new RedirectResult("/Project/Index");
-                                    return;
+                                    Project_ReportService service = new Project_ReportService();
+                                    if (keys.Count() == 4)
+                                    {
+                                        if (AuthenticationManager.LoggedEmployee.Id != service.GetById(Convert.ToInt32(keys[3])).CreatorId)
+                                        {
+                                            filterContext.Result = new RedirectResult("/Project/Index");
+                                            return;
+                                        }
+                                    }
+
+                                }
+                                else
+                                {
+                                    goto case "Project";
                                 }
                             }
+                            
 
                             break;
                         }
@@ -51,7 +74,7 @@ namespace ProjectManagementSystem.Filters
                             TaskService service = new TaskService();
                             if (keys.Count() == 4)
                             {
-                                if (AuthenticationManager.LoggedEmployee.Id != service.GetById(Convert.ToInt32(keys[3])).CreatorId || AuthenticationManager.LoggedEmployee.Id != service.GetById(Convert.ToInt32(keys[3])).AssignetId)
+                                if (AuthenticationManager.LoggedEmployee.Id != service.GetById(Convert.ToInt32(keys[3])).CreatorId && AuthenticationManager.LoggedEmployee.Id != service.GetById(Convert.ToInt32(keys[3])).AssignetId)
                                 {
                                     filterContext.Result = new RedirectResult("/Task/Index");
                                     return;
