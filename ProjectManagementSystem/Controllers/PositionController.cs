@@ -1,5 +1,6 @@
 ﻿using DataAccess.Entity;
 using DataAccess.Service;
+using ProjectManagementSystem.Filters;
 using ProjectManagementSystem.ViewModels.PositionVM;
 using ProjectManagementSystem.ViewModels.Project_ReportVM;
 using System;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace ProjectManagementSystem.Controllers
 {
+    [AdminFilter]
     public class PositionController : BaseController<Position, ListPositionVM, EditPositionVM, DetailsPositionVM, PositionFilterVM>
     {
         public override void ExtraDelete(Position position)

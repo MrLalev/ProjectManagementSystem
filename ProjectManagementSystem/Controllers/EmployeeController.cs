@@ -1,5 +1,6 @@
 ﻿using DataAccess.Entity;
 using DataAccess.Service;
+using ProjectManagementSystem.Filters;
 using ProjectManagementSystem.Models;
 using ProjectManagementSystem.ViewModels.EmployeeVM;
 using System;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace ProjectManagementSystem.Controllers
 {
+    [AdminFilter]
     public class EmployeeController : BaseController<Employee, ListEmployeeVM, EditEmployeeVM, DetailsEmployeeVM, EmployeeFilterVM>
     {
         public override void FillList(EditEmployeeVM model)

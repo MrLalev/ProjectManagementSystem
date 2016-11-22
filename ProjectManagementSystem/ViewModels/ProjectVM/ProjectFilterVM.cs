@@ -1,4 +1,5 @@
 ﻿using DataAccess.Entity;
+using DataAccess.Service;
 using ProjectManagementSystem.Filters;
 using ProjectManagementSystem.Models;
 using System;
@@ -15,18 +16,30 @@ namespace ProjectManagementSystem.ViewModels.ProjectVM
         public string Name { get; set; }
 
         [FilterByAttribute(DisplayName = "Start Date:")]
-        public DateTime StartDate { get; set; }
+        public string StartDate { get; set; }
 
         [FilterByAttribute(DisplayName = "End Date:")]
-        public DateTime EndDate { get; set; }
+        public string EndDate { get; set; }
 
         [FilterByAttribute(DisplayName = "State:")]
         public string State { get; set; }
+
+        [FilterByAttribute(DisplayName = "Team:")]
+        public string Team { get; set; }
         public override Expression<Func<Project, bool>> GenerateFilter()
         {
+            TeamService TeamService = new TeamService();
+            int teamId = TeamService.GetAll(t => t.Name == Team).ToList().Count > 0 ? TeamService.GetAll(t => t.Name == Team).ToList()[0].Id : 0;
+
+            DateTime startDate = Convert.ToDateTime(StartDate);
+            DateTime endDate = Convert.ToDateTime(EndDate);
+
             return (p => (p.TeamId == AuthenticationManager.LoggedEmployee.TeamId) && 
                          (String.IsNullOrEmpty(Name) || p.Name.Contains(Name)) &&
-                         (String.IsNullOrEmpty(State) || p.Finished == (State.ToLower() == "finished" ? true : false)));
+                         (String.IsNullOrEmpty(Team) || p.TeamId == teamId) &&
+                         (String.IsNullOrEmpty(StartDate) || p.StartDate == startDate) &&
+                         (String.IsNullOrEmpty(EndDate) || p.StartDate == endDate) &&
+                         (String.IsNullOrEmpty(State) || p.Finished == (State.ToLower() == "finish" ? true : false)));
         }
     }
 }

@@ -97,18 +97,6 @@ namespace ProjectManagementSystem.Filters
 
                             break;
                         }
-                    case "Team":
-                    case "Employee": 
-                    case "Department":
-                    case "Position":
-                        {
-                            if (AuthenticationManager.LoggedEmployee.AdminRole != true)
-                            {
-                                filterContext.Result = new RedirectResult("/Home/Index");
-                                return;
-                            }
-                            break;
-                        }
                     default:
                         break;
                 }

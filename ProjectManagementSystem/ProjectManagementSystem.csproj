@@ -125,6 +125,7 @@
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Filters\AccessFilterAttribute.cs" />
+    <Compile Include="Filters\AdminFilterAttribute.cs" />
     <Compile Include="Filters\AuthenticationFilterAttribute.cs" />
     <Compile Include="Filters\FilterByAttribute.cs" />
     <Compile Include="Filters\FilterDropDownAttribute.cs" />
@@ -233,6 +234,7 @@
     <Content Include="Views\Comment\Details.cshtml" />
     <Content Include="Views\Comment\Delete.cshtml" />
     <Content Include="Views\Shared\_Pager.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,5 +1,6 @@
 ﻿using DataAccess.Entity;
 using DataAccess.Service;
+using ProjectManagementSystem.Filters;
 using ProjectManagementSystem.ViewModels.TeamVM;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace ProjectManagementSystem.Controllers
 {
+    [AdminFilter]
     public class TeamController : BaseController<Team, ListTeamVM, EditTeamVM, DetailsTeamVM, TeamFilterVM>
     {
         public override void ExtraDelete(Team team)

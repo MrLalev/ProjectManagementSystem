@@ -103,9 +103,9 @@ namespace ProjectManagementSystem.Controllers
             model.assignets = new string[model.Items.Count()];
             for (int i = 0; i < model.Items.Count(); i++)
             {
-                if (model.Items[i].CreatorId != 0)
+                if (model.Items[i].AssignetId != 0)
                 {
-                    model.assignets[i] = EmployeeService.GetById(model.Items[i].CreatorId).FirstName + " " + EmployeeService.GetById(model.Items[i].CreatorId).LastName;
+                    model.assignets[i] = EmployeeService.GetById(model.Items[i].AssignetId).FirstName + " " + EmployeeService.GetById(model.Items[i].AssignetId).LastName;
                 }
                 else 
                 {

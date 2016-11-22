@@ -12,6 +12,8 @@
         $('#DateOfBirth').datetimepicker(
             {
                 timepicker: false,
+                startDate: '@DateTime.Now.AddYears(-18)',
+                formatDate: 'd.m.Y',
                 format: 'd.m.Y'
             });
     });

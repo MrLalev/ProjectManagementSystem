@@ -1,5 +1,6 @@
 ﻿using DataAccess.Entity;
 using DataAccess.Service;
+using ProjectManagementSystem.Filters;
 using ProjectManagementSystem.ViewModels.DepartmentVM;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace ProjectManagementSystem.Controllers
 {
+    [AdminFilter]
     public class DepartmentController : BaseController<Department, ListDepartmentVM, EditDepartmentVM, DetailsDepartmentVM, DepartmentFilterVM>
     {
         public override void ExtraDelete(Department department)
