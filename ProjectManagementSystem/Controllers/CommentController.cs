@@ -1,5 +1,6 @@
 ﻿using DataAccess.Entity;
 using DataAccess.Service;
+using ProjectManagementSystem.Filters;
 using ProjectManagementSystem.Models;
 using ProjectManagementSystem.ViewModels.CommentVM;
 using System;
@@ -21,7 +22,7 @@ namespace ProjectManagementSystem.Controllers
 
             foreach (var item in projects)
             {
-                foreach (var task in TaskService.GetAll(t => t.ProjectId == item.Id).ToList())
+                foreach (var task in TaskService.GetAll(t => t.ProjectId == item.Id && (t.AssignetId == AuthenticationManager.LoggedEmployee.Id || t.CreatorId == AuthenticationManager.LoggedEmployee.Id) && t.Status != "Resolved" && t.Status != "Closed").ToList())
                 {
                     tasks.Add(task);
                 }

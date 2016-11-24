@@ -129,7 +129,6 @@
     <Compile Include="Filters\AuthenticationFilterAttribute.cs" />
     <Compile Include="Filters\FilterByAttribute.cs" />
     <Compile Include="Filters\FilterDropDownAttribute.cs" />
-    <Compile Include="Filters\HttpActionContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

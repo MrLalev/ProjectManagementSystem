@@ -15,7 +15,7 @@ namespace ProjectManagementSystem.Controllers
         public override void FillList(EditProject_ReportVM model)
         {
             ProjectService ProjectService = new ProjectService();
-            List<Project> projects = ProjectService.GetAll(p => p.TeamId == AuthenticationManager.LoggedEmployee.TeamId).ToList();
+            List<Project> projects = ProjectService.GetAll(p => p.TeamId == AuthenticationManager.LoggedEmployee.TeamId && p.Finished != true).ToList();
 
             model.ListProjects = new List<SelectListItem>();
             foreach (var item in projects)
@@ -49,7 +49,15 @@ namespace ProjectManagementSystem.Controllers
 
             for (int i = 0; i < model.Items.Count(); i++)
             {
-                model.projects[i] = ProjectService.GetById(model.Items[i].ProjectId).Name;
+                try
+                {
+                    model.projects[i] = ProjectService.GetById(model.Items[i].ProjectId).Name;
+                }
+                catch (Exception)
+                {
+                    break;
+                }
+               
             }
 
             EmployeeService EmployeeService = new EmployeeService();

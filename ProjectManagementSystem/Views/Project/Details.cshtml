@@ -64,7 +64,7 @@
 <table class="table">
     <tr>
         <th>Title</th>
-        <th>Project</th>
+        <th>Content</th>
         <th>Creator</th>
         <th>Options</th>
     </tr>
@@ -73,11 +73,10 @@
     {
         <tr>
             <td>@Model.Project_ReportVM.Items[i].Title</td>
-            <td>@Model.Project_ReportVM.projects[i]</td>
+            <td>@Model.Project_ReportVM.Items[i].Content</td>
             <td>@Model.Project_ReportVM.creators[i]</td>
             <td>
                 @Html.ActionLink("Edit", "Edit", "Project_Report", new { id = Model.Project_ReportVM.Items[i].Id }, null) |
-                @Html.ActionLink("Details", "Details", "Project_Report", new { id = Model.Project_ReportVM.Items[i].Id },null) |
                 @Html.ActionLink("Delete", "Delete", "Project_Report", new { id = Model.Project_ReportVM.Items[i].Id },null)
             </td>
         </tr>

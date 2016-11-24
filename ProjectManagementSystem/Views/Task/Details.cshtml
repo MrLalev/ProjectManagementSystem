@@ -89,7 +89,7 @@
 <table class="table">
     <tr>
         <th>Title</th>
-        <th>Task</th>
+        <th>Content</th>
         <th>Creator</th>
         <th>Options</th>
     </tr>
@@ -98,11 +98,10 @@
     {
         <tr>
             <td>@Model.CommentsVM.Items[i].Title</td>
-            <td>@Model.CommentsVM.tasks[i]</td>
+            <td>@Model.CommentsVM.Items[i].Content</td>
             <td>@Model.CommentsVM.creators[i]</td>
             <td>
                 @Html.ActionLink("Edit", "Edit", "Comment", new { id = Model.CommentsVM.Items[i].Id },null) |
-                @Html.ActionLink("Details", "Details", "Comment", new { id = Model.CommentsVM.Items[i].Id },null) |
                 @Html.ActionLink("Delete", "Delete", "Comment",new { id = Model.CommentsVM.Items[i].Id },null)
             </td>
         </tr>

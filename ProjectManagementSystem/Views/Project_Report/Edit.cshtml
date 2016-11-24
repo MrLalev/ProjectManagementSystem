@@ -2,14 +2,12 @@
 
 @{
     ViewBag.Title = "Edit";
-    DataAccess.Service.Project_ReportService service = new DataAccess.Service.Project_ReportService();
-    var id = service.GetById(Convert.ToInt32(this.ViewContext.RouteData.Values["id"])).ProjectId;
 }
 
 <script src="~/Scripts/jquery.js"></script>
 <script>
     $(document).ready(function () {
-        $("#ProjectId").val(@id);
+        $("#ProjectId").val(@Model.ProjectId);
     });
 </script>
 <h2>Edit Report</h2>

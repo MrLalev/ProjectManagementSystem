@@ -5,7 +5,12 @@
 }
 
 <h2>Edit Task</h2>
-
+<script src="~/Scripts/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#ProjectId").val(@Model.ProjectId);
+    });
+</script>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

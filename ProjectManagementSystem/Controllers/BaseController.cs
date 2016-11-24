@@ -94,6 +94,7 @@ namespace ProjectManagementSystem.Controllers
             return RedirectToAction("Index");
         }
 
+        [AccessFilter]
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -121,6 +122,7 @@ namespace ProjectManagementSystem.Controllers
             return RedirectToAction("Index");
         }
 
+        [AccessFilter]
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -154,6 +156,7 @@ namespace ProjectManagementSystem.Controllers
             return RedirectToAction("Index");
         }
 
+        [AccessFilter]
         [HttpGet]
         public ActionResult Details(int id)
         {
