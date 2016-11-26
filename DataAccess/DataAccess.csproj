@@ -50,6 +50,7 @@
     <Compile Include="Entity\Comment.cs" />
     <Compile Include="Entity\Department.cs" />
     <Compile Include="Entity\Employee.cs" />
+    <Compile Include="Entity\LogWork.cs" />
     <Compile Include="Entity\Position.cs" />
     <Compile Include="Entity\Project.cs" />
     <Compile Include="Entity\Project_Report.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Repository\CommentRepo.cs" />
     <Compile Include="Repository\DepartmentRepo.cs" />
     <Compile Include="Repository\EmployeeRepo.cs" />
+    <Compile Include="Repository\LogWorkRepo.cs" />
     <Compile Include="Repository\PositionRepo.cs" />
     <Compile Include="Repository\ProjectRepo.cs" />
     <Compile Include="Repository\Project_ReportRepo.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="Service\CommentService.cs" />
     <Compile Include="Service\DepartmentService.cs" />
     <Compile Include="Service\EmployeeService.cs" />
+    <Compile Include="Service\LogWorkService.cs" />
     <Compile Include="Service\PositionService.cs" />
     <Compile Include="Service\ProjectService.cs" />
     <Compile Include="Service\Project_ReportService.cs" />

@@ -3,7 +3,7 @@ namespace ProjectManagementSystem.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class SetDB : DbMigration
+    public partial class addLogWork : DbMigration
     {
         public override void Up()
         {
@@ -46,6 +46,18 @@ namespace ProjectManagementSystem.Migrations
                         Password = c.String(),
                         Email = c.String(),
                         AdminRole = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.LogWorks",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        TaskId = c.Int(nullable: false),
+                        EmployeeId = c.Int(nullable: false),
+                        WorkType = c.String(),
+                        HoursWorked = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -119,6 +131,7 @@ namespace ProjectManagementSystem.Migrations
             DropTable("dbo.Projects");
             DropTable("dbo.Project_Report");
             DropTable("dbo.Positions");
+            DropTable("dbo.LogWorks");
             DropTable("dbo.Employees");
             DropTable("dbo.Departments");
             DropTable("dbo.Comments");

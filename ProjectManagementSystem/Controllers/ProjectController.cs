@@ -31,7 +31,11 @@ namespace ProjectManagementSystem.Controllers
 
             }
 
-            model.ListTeams[0].Selected = true;
+            if (model.ListTeams.Count > 0)
+            {
+                model.ListTeams[0].Selected = true;
+            }
+
         }
 
         public override void AddAdditionalInfo(ListProjectVM model)

@@ -33,7 +33,8 @@
             @Html.ActionLink("Edit", "Edit", new { id = Model.Items[i].Id }) |
             @Html.ActionLink("Details", "Details", new { id = Model.Items[i].Id }) |
             @Html.ActionLink("Delete", "Delete", new { id = Model.Items[i].Id }) |
-            @Html.ActionLink("Create Comment", "Create", "Comment", new { id = Model.Items[i].Id }, null)
+            @Html.ActionLink("Create Comment", "Create", "Comment", new { id = Model.Items[i].Id }, null) |
+            @Html.ActionLink("Log Work", "Create", "LogWork", new { id = Model.Items[i].Id }, null)
         </td>
     </tr>
 }

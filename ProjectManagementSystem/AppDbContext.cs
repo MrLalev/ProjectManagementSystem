@@ -17,5 +17,6 @@ namespace ProjectManagementSystem
         public DbSet<Project_Report> Project_Reports { get; set; }
         public DbSet<Task> Tasks { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<LogWork> LogWorks { get; set; }
     }
 }

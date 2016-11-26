@@ -109,3 +109,28 @@
 
 </table>
 @Html.Partial("~/Views/Shared/_Pager.cshtml", Model.CommentsVM.Pager)
+
+<h2>LogWork</h2>
+
+<p>
+    @Html.ActionLink("Log Work", "Create", "LogWork", new { id = Model.Id }, null)
+</p>
+
+<table class="table">
+    <tr>
+        <th>Employee</th>
+        <th>HoursWorked</th>
+        <th>WorkType</th>
+    </tr>
+
+    @for (int i = 0; i < Model.LogWorkVM.Items.Count(); i++)
+    {
+        <tr>
+            <td>@Model.LogWorkVM.employees[i]</td>
+            <td>@Model.LogWorkVM.Items[i].HoursWorked</td>
+            <td>@Model.LogWorkVM.Items[i].WorkType</td>
+        </tr>
+    }
+
+</table>
+@Html.Partial("~/Views/Shared/_Pager.cshtml", Model.LogWorkVM.Pager)

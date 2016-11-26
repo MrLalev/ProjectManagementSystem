@@ -1,0 +1,60 @@
+﻿@model ProjectManagementSystem.ViewModels.LogWorkVM.EditLogWorkVM
+
+@{
+    ViewBag.Title = "Create";
+
+    var id = this.ViewContext.RouteData.Values["id"].ToString();
+}
+<script src="~/Scripts/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#TaskId").val(@id);
+    });
+</script>
+
+<h2>Log Work</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TaskId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TaskId, Model.ListTask, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TaskId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WorkTypeValue, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.WorkTypeValue, Model.ListWorkType, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.WorkTypeValue)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HoursWorked, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.HoursWorked, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.HoursWorked)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

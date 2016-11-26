@@ -4,6 +4,7 @@ using ProjectManagementSystem.Filters;
 using ProjectManagementSystem.Models;
 using ProjectManagementSystem.ViewModels;
 using ProjectManagementSystem.ViewModels.CommentVM;
+using ProjectManagementSystem.ViewModels.LogWorkVM;
 using ProjectManagementSystem.ViewModels.TaskVM;
 using System;
 using System.Collections.Generic;
@@ -76,9 +77,9 @@ namespace ProjectManagementSystem.Controllers
             model.ListStatus.Add(new SelectListItem() { Text = "Closed", Value = "Closed" });
             model.ListStatus.Add(new SelectListItem() { Text = "Reopened", Value = "Reopend" });
 
-            if (model.ListPercentage.Count() > 0)
+            if (model.ListStatus.Count() > 0)
             {
-                model.ListPercentage[0].Selected = true;
+                model.ListStatus[0].Selected = true;
             }
 
         }
@@ -90,7 +91,15 @@ namespace ProjectManagementSystem.Controllers
 
             for (int i = 0; i < model.Items.Count(); i++)
             {
-                model.projects[i] = ProjectService.GetById(model.Items[i].ProjectId).Name;
+                try
+                {
+                    model.projects[i] = ProjectService.GetById(model.Items[i].ProjectId).Name;
+                }
+                catch (Exception)
+                {                    
+                    break;
+                }
+
             }
 
             EmployeeService EmployeeService = new EmployeeService();
@@ -136,6 +145,7 @@ namespace ProjectManagementSystem.Controllers
             task.PercentageDone = model.PercentageDone;
             task.ProjectId = model.ProjectId;
             task.Status = model.Status;
+            task.LogWork = model.LogWork;
         }
 
         public override void PopulateModel(Task task, EditTaskVM model)
@@ -147,6 +157,7 @@ namespace ProjectManagementSystem.Controllers
             model.PercentageDone = task.PercentageDone;
             model.ProjectId = task.ProjectId;
             model.Status = task.Status;
+            model.LogWork = Convert.ToInt32(task.LogWork);
         }
 
         public override void PopulateModelDelete(Task task, DetailsTaskVM model)
@@ -161,6 +172,7 @@ namespace ProjectManagementSystem.Controllers
             ProjectService ProjectService = new ProjectService();
             model.Project = ProjectService.GetById(task.ProjectId).Name;
             model.Status = task.Status;
+            model.LogWork = Convert.ToInt32(task.LogWork);
 
             model.CommentsVM = new ListCommentVM();
 
@@ -185,6 +197,31 @@ namespace ProjectManagementSystem.Controllers
 
             model.CommentsVM.Pager.PagesCount = (int)Math.Ceiling(model.CommentsVM.Items.Count / (double)model.CommentsVM.Pager.PageSize);
             model.CommentsVM.Items = model.CommentsVM.Items.Skip(model.CommentsVM.Pager.PageSize * (model.CommentsVM.Pager.CurrentPage - 1)).Take(model.CommentsVM.Pager.PageSize).ToList();
+
+            model.LogWorkVM = new ListLogWorkVM();
+
+            LogWorkService LogWorkService = new LogWorkService();
+            List<LogWork> logWork = LogWorkService.GetAll(l => l.TaskId == model.Id).ToList();
+
+            model.LogWorkVM.Items = new List<LogWork>();
+            foreach (LogWork item in logWork)
+            {
+                model.LogWorkVM.Items.Add(item);
+            }
+
+            LogWorkController LogWorkController = new LogWorkController();
+            LogWorkController.AddAdditionalInfo(model.LogWorkVM);
+
+            model.LogWorkVM.Pager = new PagerVM();
+            model.LogWorkVM.Filter = new LogWorkFilterVM();
+            model.LogWorkVM.Pager.Prefix = "LogWorkVM.Pager.";
+            model.LogWorkVM.Filter.Prefix = "LogWorkVM.Filter.";
+            model.LogWorkVM.Filter.Pager = model.LogWorkVM.Pager;
+
+            TryUpdateModel(model);
+
+            model.LogWorkVM.Pager.PagesCount = (int)Math.Ceiling(model.LogWorkVM.Items.Count / (double)model.LogWorkVM.Pager.PageSize);
+            model.LogWorkVM.Items = model.LogWorkVM.Items.Skip(model.LogWorkVM.Pager.PageSize * (model.LogWorkVM.Pager.CurrentPage - 1)).Take(model.LogWorkVM.Pager.PageSize).ToList();
         }
 
         public override BaseService<Task> SetService()

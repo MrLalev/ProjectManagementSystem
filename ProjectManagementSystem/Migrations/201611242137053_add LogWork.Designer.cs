@@ -7,13 +7,13 @@ namespace ProjectManagementSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class SetDB : IMigrationMetadata
+    public sealed partial class addLogWork : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SetDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addLogWork));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611061537116_SetDB"; }
+            get { return "201611242137053_add LogWork"; }
         }
         
         string IMigrationMetadata.Source

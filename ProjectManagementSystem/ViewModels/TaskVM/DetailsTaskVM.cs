@@ -1,4 +1,5 @@
 ﻿using ProjectManagementSystem.ViewModels.CommentVM;
+using ProjectManagementSystem.ViewModels.LogWorkVM;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -34,5 +35,6 @@ namespace ProjectManagementSystem.ViewModels.TaskVM
         public string Creator { get; set; }
 
         public ListCommentVM CommentsVM { get; set; }
+        public ListLogWorkVM LogWorkVM { get; set; }
     }
 }
