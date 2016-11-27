@@ -28,9 +28,34 @@ namespace ProjectManagementSystem.Migrations
             //    );
             //
 
+            context.Departments.AddOrUpdate(
+              d => d.Name,
+              new Department() { Name = "Softuer Development", Description = ""}
+            );
+
+            context.Teams.AddOrUpdate(
+              t => t.Name,
+              new Team() { Name = "2Slow2Curious", DepartmentId = 1 }
+            );
+
+            context.Positions.AddOrUpdate(
+              p => p.Name,
+              new Position() { Name = "Softuer Developer", Salary = 2000 }
+            );
+
             context.Employees.AddOrUpdate(
               u => u.Email,
-              new Employee() { Email = "admin@admin.com", FirstName = "Admin",SecondName = "Admin", LastName = "Admin", Password = "admin", Adress = "adress", Phone = "0000000000", AdminRole = true, DateofBirth = DateTime.Now,  }
+              new Employee() { Email = "admin@admin.com", FirstName = "Admin",SecondName = "Admin", LastName = "Admin", Password = "admin", Adress = "adress", Phone = "0000000000", AdminRole = true, DateofBirth = DateTime.Now, PositionId = 1, TeamId = 1 }
+            );
+
+            context.Projects.AddOrUpdate(
+              p => p.Name,
+              new Project() { Name = "BollywoodMovies", TeamId = 1, StartDate = DateTime.Now , EndDate = DateTime.Now.AddDays(5), Finished = false}
+            );
+
+            context.Tasks.AddOrUpdate(
+              t => t.Title,
+              new Task() { Title = "Make API", ProjectId = 1, CreatorId = 1, Description = "As a user I want to list/create/edit/delete movies from database.", Status = "New", PercentageDone = 0 }
             );
         }
     }
